@@ -23,22 +23,23 @@ CREATE TABLE genero (
 );
 
 -- Crear la tabla 'pelicula'
-CREATE TABLE pelicula (
-    codigo INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(100) NOT NULL,
-    url VARCHAR(255) NOT NULL,
-	genero_id INT NOT NULL,
-    imagen BLOB,
-    FOREIGN KEY (genero_id) REFERENCES genero(codigo)
-);
+CREATE TABLE `peliculas` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(40) NOT NULL,
+  `director` varchar(25) NOT NULL,
+  `url` varchar(80) NOT NULL,
+  `imagen` longblob,
+  PRIMARY KEY (`codigo`)
+) ;
 
 -- Crear la tabla de relación 'pelicula_genero'
-CREATE TABLE pelicula_genero (
-    pelicula_id INT NOT NULL,
-    genero_id INT NOT NULL,
-    PRIMARY KEY (pelicula_id, genero_id),
-    FOREIGN KEY (pelicula_id) REFERENCES pelicula(codigo),
-    FOREIGN KEY (genero_id) REFERENCES genero(codigo)
+CREATE TABLE `peliculas_generos` (
+  `codigoPelicula` int NOT NULL,
+  `idGenero` int NOT NULL,
+  PRIMARY KEY (`codigoPelicula`,`idGenero`),
+  KEY `idGenero` (`idGenero`),
+  CONSTRAINT `peliculas_generos_ibfk_1` FOREIGN KEY (`codigoPelicula`) REFERENCES `peliculas` (`codigo`),
+  CONSTRAINT `peliculas_generos_ibfk_2` FOREIGN KEY (`idGenero`) REFERENCES `generos` (`id`)
 );
 
 INSERT INTO genero (genero) 
@@ -62,3 +63,6 @@ Que tal profes, hago un pequeño apartado de aclaraciones, ya que hay dos puntos
 
 - Debido a problemas personales, no pude subir el trabajo el día de la fecha de entrega planteada, debido a eso me atrase con la entrega, pero aun así no quería quedarme sin enviarles el trabajo y recibir feedback sobre el mismo.
 - Solamente tuve un problema al momento de desarrollar la actividad que es que al momento de cargar peliculas, se me duplican en la tabla "pelicula" cuando tenemos mas de 1 genero por pelicula, generando un problema al momento de buscar información o eliminar peliculas. Este es un problema que no pude llegar a solucionar. 
+
+## Modificaciones
+-Se tomaron en cuenta todas las modificaciones aclaradas en la devolución del trabajo, debido a que se tenia que realizar un cambio estructural del DAO, parece un nuevo trabajo hecho de 0, debido a eso y para evitar conflictos con el git, me tome el atrevimiento de en algunas situaciones, updatear archivos a mano desde la pagina web, si bien no es lo previsto, me parece lo mejor para evitar romper el repositorio actual. Se actualizaron tambien tablas sql, estas mismas estan aclaradas dentro de este mismo readme.
