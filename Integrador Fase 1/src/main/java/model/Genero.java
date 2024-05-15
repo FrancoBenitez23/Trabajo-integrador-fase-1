@@ -1,12 +1,17 @@
 package model;
 
 public class Genero {
-    private int id;
-    private String genero;
 
-    public Genero(int id, String genero) {
+    private int id;
+    private String nombre;
+
+    public Genero() {
+        super();
+    }
+
+    public Genero(int id, String nombre) {
         this.id = id;
-        this.genero = genero;
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -17,11 +22,11 @@ public class Genero {
         this.id = id;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
