@@ -22,13 +22,13 @@
 DROP TABLE IF EXISTS `pelicula_genero`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_genero` (
-  `pelicula_id` int NOT NULL,
-  `genero_id` int NOT NULL,
-  PRIMARY KEY (`pelicula_id`,`genero_id`),
-  KEY `genero_id` (`genero_id`),
-  CONSTRAINT `pelicula_genero_ibfk_1` FOREIGN KEY (`pelicula_id`) REFERENCES `pelicula` (`codigo`),
-  CONSTRAINT `pelicula_genero_ibfk_2` FOREIGN KEY (`genero_id`) REFERENCES `genero` (`codigo`)
+CREATE TABLE `peliculas_generos` (
+  `codigoPelicula` int NOT NULL,
+  `idGenero` int NOT NULL,
+  PRIMARY KEY (`codigoPelicula`,`idGenero`),
+  KEY `idGenero` (`idGenero`),
+  CONSTRAINT `peliculas_generos_ibfk_1` FOREIGN KEY (`codigoPelicula`) REFERENCES `peliculas` (`codigo`),
+  CONSTRAINT `peliculas_generos_ibfk_2` FOREIGN KEY (`idGenero`) REFERENCES `generos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
